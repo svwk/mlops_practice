@@ -39,15 +39,19 @@ if (not os.path.isdir(script_path)) or \
         (not os.path.isdir(os.path.join(data_path, 'test'))) or \
         (not os.path.isdir(os.path.join(data_path, 'processed'))):
     print(mc.NO_PATH)
-    sys.exit(3)
+    sys.exit(6)
 
 files = [name for name in os.listdir(os.path.join(data_path, 'processed'))
          if os.path.isfile(os.path.join(data_path, 'processed', name))]
 files_count = len(files)
 
+if files_count == 0:
+    print(mc.DIRECTORY_IS_EMPTY)
+    sys.exit(7)
+
 if dataset_name is None and files_count != 1:
     print(mc.NO_NAME)
-    sys.exit(4)
+    sys.exit(8)
 
 filename = f"{dataset_name}.csv" if dataset_name is not None else None
 
@@ -70,4 +74,4 @@ try:
     print(f"{mc.SOURCE_SAVED}: {filename}")
 except Exception as ex:
     print_error(ex, filename)
-    sys.exit(6)
+    sys.exit(9)

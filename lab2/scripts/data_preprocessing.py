@@ -41,7 +41,7 @@ if (not os.path.isdir(script_path)) or \
         (not os.path.isdir(os.path.join(data_path, 'processed'))) or \
         (not os.path.isdir(models_path)):
     print(mc.NO_PATH)
-    sys.exit(1)
+    sys.exit(4)
 
 for filename in os.listdir(os.path.join(data_path, 'raw')):
     if filename.endswith(".csv"):
@@ -60,4 +60,4 @@ for filename in os.listdir(os.path.join(data_path, 'raw')):
 
         except Exception as ex:
             print_error(ex, full_filename)
-            sys.exit(2)
+            sys.exit( 5)

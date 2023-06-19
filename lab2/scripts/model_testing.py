@@ -42,15 +42,19 @@ if (not os.path.isdir(script_path)) or \
         (not os.path.isdir(os.path.join(data_path, 'test'))) or \
         (not os.path.isdir(models_path)):
     print(mc.NO_PATH)
-    sys.exit(8)
+    sys.exit(15)
 
 files_test = [name for name in os.listdir(os.path.join(data_path, 'test'))
               if os.path.isfile(os.path.join(data_path, 'test', name))]
 files_test_count = len(files_test)
 
+if files_test_count == 0:
+    print(mc.DIRECTORY_IS_EMPTY)
+    sys.exit(16)
+
 if dataset_name is None and files_test_count != 1:
     print(mc.NO_NAME)
-    sys.exit(4)
+    sys.exit(17)
 
 filename = f"{dataset_name}.csv" if dataset_name is not None else None
 
@@ -58,7 +62,7 @@ if files_test_count == 1:
     if filename is None:
         filename = files_test[0]
     elif filename != files_test[0]:
-        sys.exit(5)
+        sys.exit(18)
 
 full_filename_test = os.path.join(data_path, 'test', filename)
 full_filename_model = os.path.join(models_path, filename.replace(".csv", "_model.pkl"))
@@ -68,9 +72,9 @@ try:
     model = joblib.load(full_filename_model)
     if model is None:
         print(mc.MODEL_READ_ERROR)
-        sys.exit(6)
+        sys.exit(19)
 
     accuracy = test_model(dataset_test, model)
 except Exception as inst:
     print(f"{mc.MODEL_READ_ERROR} {full_filename_model} {inst.args}")
-    sys.exit(7)
+    sys.exit(20)
