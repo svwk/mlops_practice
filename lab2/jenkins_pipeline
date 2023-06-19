@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+    environment {
+        SCRIPT_DIR = 'lab2/scripts'
+        VENV_DIR = '/home/svs/data/projects/python/urfu/mlops_practice/lab2/venv'
+        DATA_DIR = '/home/svs/data/projects/python/urfu/mlops_practice/lab2/data'
+        MODELS_DIR = '/home/svs/data/projects/python/urfu/mlops_practice/lab2/models'
+        MODEL_NAME    = 'moons'
+    }
+
+    stages {
+        stage('Checkout'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'lab2']]]], userRemoteConfigs: [[credentialsId: 'cdd92e9a-601e-43a8-935e-5c417aee9fec', url: 'https://github.com/svwk/mlops_practice']])
+            }
+        }
+
+        stage('Init_Dir'){
+            steps {
+                sh '$SCRIPT_DIR/init_dirs.sh $SCRIPT_DIR $DATA_DIR $MODELS_DIR'
+            }
+        }
+
+        stage('Init_Env'){
+            steps{
+                sh '$SCRIPT_DIR/venv_install.sh $VENV_DIR'
+            }
+        }
+
+        stage('Data processing') {
+            steps {
+                sh '$VENV_DIR/bin/python3 $SCRIPT_DIR/data_preprocessing.py -s $SCRIPT_DIR -d $DATA_DIR -m $MODELS_DIR'
+            }
+        }
+
+         stage('Data separation') {
+            steps {
+                sh '$VENV_DIR/bin/python3 $SCRIPT_DIR/data_separation.py   -s $SCRIPT_DIR -d $DATA_DIR -n $MODEL_NAME'
+            }
+        }
+
+        stage('Model preparation') {
+            steps {
+                sh '$VENV_DIR/bin/python3 $SCRIPT_DIR/model_preparation.py  -s $SCRIPT_DIR -d $DATA_DIR -m $MODELS_DIR -n $MODEL_NAME';
+            }
+        }
+
+        stage('Model testing') {
+            steps {
+                sh '$VENV_DIR/bin/python3 $SCRIPT_DIR/model_testing.py  -s $SCRIPT_DIR -d $DATA_DIR -m $MODELS_DIR -n $MODEL_NAME'
+            }
+        }
+    }
+}
