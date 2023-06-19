@@ -20,7 +20,7 @@ if [[ ! -d "$install_dir" && ! -L "$install_dir" ]] ; then
 fi
 
 source "$install_dir/bin/activate"
-pip install -r requirements.txt &> /dev/null
+pip install -r ./lab2/requirements.txt &> /dev/null
 deactivate
 
  echo "Virtual Environment is installed"
