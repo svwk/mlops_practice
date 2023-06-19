@@ -11,6 +11,9 @@ target
 *.so
 .vscode
 *.code-workspace
+*.csv
+*.pkl
+lab1/
 
 # Distribution / packaging
 .Python
