@@ -1,0 +1,77 @@
+Started by user admin@rr.rr
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /home/svs/jenkins/workspace/practica_2_2
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential cdd92e9a-601e-43a8-935e-5c417aee9fec
+ > git rev-parse --resolve-git-dir /home/svs/jenkins/workspace/practica_2_2/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/svwk/mlops_practice # timeout=10
+Fetching upstream changes from https://github.com/svwk/mlops_practice
+ > git --version # timeout=10
+ > git --version # 'git version 2.37.2'
+using GIT_ASKPASS to set credentials github username and password
+ > git fetch --tags --force --progress -- https://github.com/svwk/mlops_practice +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision c089415af387c9bbad0392da72466bf433529fad (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git read-tree -mu HEAD # timeout=10
+ > git checkout -f c089415af387c9bbad0392da72466bf433529fad # timeout=10
+Commit message: "python files fix"
+ > git rev-list --no-walk c089415af387c9bbad0392da72466bf433529fad # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Init_Dir)
+[Pipeline] sh
++ lab2/scripts/init_dirs.sh lab2/scripts /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/data /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/models
+/home/svs/data/projects/python/urfu/mlops_practice/lab2_1/models   created
+/home/svs/data/projects/python/urfu/mlops_practice/lab2_1/data   created
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Init_Env)
+[Pipeline] sh
++ lab2/scripts/venv_install.sh /home/svs/data/projects/python/urfu/mlops_practice/lab2/venv
+Virtual Environment is installed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Data processing)
+[Pipeline] sh
++ /home/svs/data/projects/python/urfu/mlops_practice/lab2/venv/bin/python3 lab2/scripts/data_preprocessing.py -s lab2/scripts -d /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/data -m /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/models
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Data separation)
+[Pipeline] sh
++ /home/svs/data/projects/python/urfu/mlops_practice/lab2/venv/bin/python3 lab2/scripts/data_separation.py -s lab2/scripts -d /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/data -n moons
+Train and test datasets are successfully saved in file: moons.csv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Model preparation)
+[Pipeline] sh
++ /home/svs/data/projects/python/urfu/mlops_practice/lab2/venv/bin/python3 lab2/scripts/model_preparation.py -s lab2/scripts -d /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/data -m /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/models -n moons
+Model is successfully generated and saved in file: /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/models/moons_model.pkl
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Model testing)
+[Pipeline] sh
++ /home/svs/data/projects/python/urfu/mlops_practice/lab2/venv/bin/python3 lab2/scripts/model_testing.py -s lab2/scripts -d /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/data -m /home/svs/data/projects/python/urfu/mlops_practice/lab2_1/models -n moons
+Model test accuracy is: 0.989
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
