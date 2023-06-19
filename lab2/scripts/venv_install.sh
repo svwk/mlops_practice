@@ -14,12 +14,12 @@ then
  apt-get install -y python3-pip
 fi
 
-if [[ ! -d "$venv_dir" && ! -L "$venv_dir" ]] ; then
-  mkdir -m ug+rw -p "$venv_dir"
-  python3 -m venv "$venv_dir"
+if [[ ! -d "$install_dir" && ! -L "$install_dir" ]] ; then
+  mkdir -m ug+rw -p "$install_dir"
+  python3 -m venv "$install_dir"
 fi
 
-source "$venv_dir/bin/activate"
+source "$install_dir/bin/activate"
 pip install -r requirements.txt &> /dev/null
 deactivate
 
