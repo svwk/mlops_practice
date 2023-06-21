@@ -1,0 +1,43 @@
+[master (root-commit) 7cf2548] dvc init
+ 5 files changed, 178 insertions(+)
+ create mode 100644 .dvc/.gitignore
+ create mode 100644 .dvc/config
+ create mode 100644 .dvcignore
+ create mode 100644 .gitignore
+ create mode 100644 readme
+00:24:12.379: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -- data.dvc
+00:24:23.842: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- data.dvc
+00:24:23.844: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false commit -F /tmp/git-commit-msg-.txt --
+[master 0798003] dvc add data
+ 1 file changed, 5 insertions(+)
+ create mode 100644 data.dvc
+00:29:53.554: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- data.dvc
+00:29:53.562: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false commit -F /tmp/git-commit-msg-.txt --
+[master 1663257] raw data added
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+01:46:08.505: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- .dvc/config
+01:46:08.528: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false commit -F /tmp/git-commit-msg-.txt --
+[master 931ce84] remote dvc repo added
+ 1 file changed, 2 insertions(+)
+01:46:19.504: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -- scripts/data_separation.py scripts/data_methods.py scripts/message_constants.py scripts/detail_params.py scripts/data_preprocessing.py
+01:46:40.339: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- scripts/data_separation.py scripts/data_methods.py scripts/message_constants.py scripts/detail_params.py scripts/data_preprocessing.py
+01:46:40.361: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false commit -F /tmp/git-commit-msg-.txt --
+[master 22fc6f2] python files added
+ 5 files changed, 291 insertions(+)
+ create mode 100644 scripts/data_methods.py
+ create mode 100755 scripts/data_preprocessing.py
+ create mode 100755 scripts/data_separation.py
+ create mode 100644 scripts/detail_params.py
+ create mode 100644 scripts/message_constants.py
+01:47:44.428: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- scripts/data_preprocessing.py
+01:47:44.451: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false commit -F /tmp/git-commit-msg-.txt --
+[master e27d6ab] data is cleaned
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+02:48:17.250: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- scripts/data_methods.py data.dvc scripts/data_preprocessing.py
+02:48:17.252: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false commit -F /tmp/git-commit-msg-.txt --
+[master 8041d0e] data is scaled
+ 3 files changed, 22 insertions(+), 8 deletions(-)
+03:07:59.569: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false add --ignore-errors -A -f -- scripts/data_methods.py data.dvc
+03:07:59.578: [lab4] git -c credential.helper= -c core.quotepath=false -c log.showSignature=false commit -F /tmp/git-commit-msg-.txt --
+[master abd9d56] data is scaled and new features added
+ 2 files changed, 5 insertions(+), 3 deletions(-)

@@ -1,0 +1,148 @@
+(env1)svs@PChome:~/data/projects/python/urfu/lab4$ dvc -V
+3.1.0
+(env1) svs@PChome:~/data/projects/python/urfu/lab4$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint:   git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/svs/data/projects/python/urfu/lab4/.git/
+(env1) svs@PChome:~/data/projects/python/urfu/lab4$ dvc init
+Initialized DVC repository.
+
+You can now commit the changes to git.
+
++---------------------------------------------------------------------+
+|                                                                     |
+|        DVC has enabled anonymous aggregate usage analytics.         |
+|     Read the analytics documentation (and how to opt-out) here:     |
+|             <https://dvc.org/doc/user-guide/analytics>              |
+|                                                                     |
++---------------------------------------------------------------------+
+
+What's next?
+------------
+- Check out the documentation: <https://dvc.org/doc>
+- Get help and share ideas: <https://dvc.org/chat>
+- Star us on GitHub: <https://github.com/iterative/dvc>
+(env1) svs@PChome:~/data/projects/python/urfu/lab4$ dvc status
+There are no data or pipelines tracked in this project yet.           
+See <https://dvc.org/doc/start> to get started!
+(env1) svs@PChome:~/data/projects/python/urfu/lab4$ dvc add data
+100% Adding...|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:00, 45.59file/s]
+                                                                                                                                                                                     
+To track the changes with git, run:
+
+        git add data.dvc
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+(env1) svs@PChome:~/data/projects/python/urfu/lab4$ dvc status
+Data and pipelines are up to date.                                                                                                                                                   
+(env1) svs@PChome:~/data/projects/python/urfu/lab4$ dvc status
+data.dvc:                                                                                                                                                                            
+        changed outs:
+                modified:           data
+(env1) svs@PChome:~/data/projects/python/urfu/lab4$ dvc add data
+100% Adding...|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:00, 50.87file/s]
+                                                                                                                                                                                     
+To track the changes with git, run:
+
+        git add data.dvc
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+(env1) svs@PChome:~/data/projects/python/urfu/lab4$ deactivate
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc remote add "mydisk" gdrive://1B95HDu6hr3ntvYtNa6jEsrdgjBITI52O
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc remote list
+mydisk  gdrive://1B95HDu6hr3ntvYtNa6jEsrdgjBITI52O
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc push -r mydisk
+2 files pushed                                                                                                                                                                       
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc status
+data.dvc:                                                                                                                                                                            
+        changed outs:
+                modified:           data
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc add data
+100% Adding...|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:00, 54.69file/s]
+                                                                                                                                                                                     
+To track the changes with git, run:
+
+        git add data.dvc
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc push -r mydisk
+2 files pushed                                                                                                                                                                       
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc status
+data.dvc:                                                                                                                                                                            
+        changed outs:
+                modified:           data
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc add data
+100% Adding...|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:00, 54.48file/s]
+                                                                                                                                                                                     
+To track the changes with git, run:
+
+        git add data.dvc
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc push -r mydisk
+2 files pushed                                                                                                                                                                       
+svs@PChome:~/data/projects/python/urfu/lab4$ git log --oneline
+8041d0e (HEAD -> master) data is scaled
+e27d6ab data is cleaned
+6c83547 python files added
+931ce84 remote dvc repo added
+1663257 raw data added
+0798003 dvc add data
+7cf2548 dvc init
+svs@PChome:~/data/projects/python/urfu/lab4$ git checkout e27d6ab
+Note: switching to 'e27d6ab'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at e27d6ab data is cleaned
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc pull -r mydisk
+M       data/                                                                                                                                                                        
+1 file modified
+svs@PChome:~/data/projects/python/urfu/lab4$ git checkout master
+Previous HEAD position was e27d6ab data is cleaned
+Switched to branch 'master'
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc status
+data.dvc:                                                                                                                                                                            
+        changed outs:
+                modified:           data
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc add data
+100% Adding...|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|1/1 [00:00, 52.65file/s]
+                                                                                                                                                                                     
+To track the changes with git, run:
+
+        git add data.dvc
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+svs@PChome:~/data/projects/python/urfu/lab4$ dvc push -r mydisk
+2 files pushed                                                                                                                                                                       
