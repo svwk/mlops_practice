@@ -1,0 +1,12 @@
+class MessageConstants():
+    MODEL_SAVED = "Model successfully generated and saved in file"
+    STAND_SAVED = "Preprocessed data saved in file"
+    SOURCE_SAVED = "Data successfully generated and saved in file"
+    STRING_COUNT_PRE = "Data size before processing"
+    STRING_COUNT_POST = "Data size after processing"
+    FILE_SAVE_ERROR = "Save error of file"
+    NO_PATH = "There is no such path"
+    MODEL_TEST_ACCURACY = "Model test accuracy is"
+    MODEL_READ_ERROR = "Model read error"
+    PARAMETERS_NOT_VALID ="Parameters are not valid"
+    INVALID_MEASUREMENTS ="Invalid measurements"

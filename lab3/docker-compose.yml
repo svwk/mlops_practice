@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+#Api
+  lab3:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    
+    image: lab3:${TAG:-latest}    
+    container_name: 'lab3'
+    #restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - default
+
